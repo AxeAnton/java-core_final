@@ -19,4 +19,5 @@ public class CalcException extends Exception {
     public String getMessage() {
         return super.getMessage() + " Будьте внимательны!";
     }
+
 }
