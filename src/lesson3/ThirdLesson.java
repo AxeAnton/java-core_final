@@ -9,46 +9,47 @@ public class ThirdLesson {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите целое число");
         int userNum = in.nextInt();
-        System.out.println(userNum * userNum);
+        System.out.println(userNum * userNum); // например число умножить на число
 
-        while (true){
+        while (true){ //boolean ТД
             System.out.println("Введите целое положительно число " +
                     "или 0 для выхода из программы");
             userNum = in.nextInt();
-            if (userNum == 0) break; // завершение текущего цикла
-            if (userNum < 0) continue; // переход на следующую итерацию
+            if (userNum == 0) break; // break - завершение текущего цикла, если значение ровно 0. Инструкция на 20 й строчке не выполняется.
+            if (userNum < 0) continue; // если значение меньше 0 выполняем инструкцию continue - переход на следующую итерацию. Инструкция на 20 й строчке не выполняется.
             System.out.println(userNum * userNum);
         }
 
-        do {
+        do { // цикл do whill - ПЕРВАЯ итерация DO выполняется ОБЯЗАТЕЛЬНО.
             System.out.println("DO WHILE: Введите целое положительно число " +
                     "или 0 для выхода из программы");
             userNum = in.nextInt(); // 0
-            if (userNum < 0) continue;
+            if (userNum < 0) continue; // если значение меньше 0 выполняем инструкцию continue - переход на следующую итерацию. Инструкция ниже не выполняется.
             System.out.println(userNum * userNum); // 0
         } while (userNum != 0);
 
 
         // вывести все четные числа от start до end
         // четное число % 2 == 0
-        // 2 4 6 8 10 12
+        // доолжен быть такой результат -  2 4 6 8 10 12
         int start = 1, end = 12;
-        while (start <= end) {
+        while (start <= end) { // while всегда подтягивает if? И еще его лучше использовать с ПОЛЬЗОВАТЕЛЬСКИМ вводам.
             if (start % 2 == 0) System.out.println(start);
-            start += 1;
+            start += 1; // возвращение переменной на 1 ед. больше!!!
         }
-
+        // for (start = 1, end = 12; start <= end; start += 1) {} // ex - бесконечный цикл  for ( ; ;  ).
         for ( start = 1, end = 12; // инициализация переменных
-              start <= end; // булевое выражение (условие)
-              start += 1 /* обновление значений переменных */)
+              start <= end; // БУЛЕВОЕ выражение (условие)
+              start += 1 /* обновление значений переменных - счечика */)
         {
-            if (start % 2 == 0) System.out.println(start);
+            if (start % 2 == 0) System.out.println(start); // если БУЛЕВОЕ выражение  - true то выполняется инструкция из тела цикла и переходит на следующую итерацию.
         }
 
-        // for (start = 1, end = 12; start <= end; start += 1) {}
+
+
 
         // вывести все неотрицательные элементы последовательности
-        // 90 85 80 75 70 65 60 и тд
+        // 90 85 80 75 70 65 60 и тд до 0
 
         for(int num = 90; num >= 0; num -= 5){
             System.out.println(num);

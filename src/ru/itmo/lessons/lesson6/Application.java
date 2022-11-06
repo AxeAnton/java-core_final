@@ -2,7 +2,7 @@ package ru.itmo.lessons.lesson6;
 
 //import ru.itmo.lessons.lesson6.books.Author;
 
-import ru.itmo.lessons.lesson6.books.Author;
+import ru.itmo.lessons.lesson6.books.Author; // 1.12 - если классы в разных ПАКЕТАХ, то для использования класса необходимо его импортировать
 import ru.itmo.lessons.lesson6.books.Book;
 import ru.itmo.lessons.lesson6.books.Shelf;
 
@@ -10,38 +10,40 @@ import ru.itmo.lessons.lesson6.books.Shelf;
 // ru.itmo.lessons.lesson6.Application
 public class Application {
     public static void main(String[] args) {
-        // объект, экземпляр класса Author
-        // типДанных имяПеременной = new вызовКонструктора();
+        //  1.10 - объект, экземпляр класса Author
+        // 1.11 - типДанных имяПеременной = new вызовКонструктора();
         Author author1 = new Author();
-        // обращение к свойствам осуществляется через .
+        // 1.14 - обращение к свойствам осуществляется через "."
         // но при таком подходе в значение свойства можно записать все, что угодно.
         // Это может навредить программе
         // Например, author1.name = ""; или author1.surname = null; и тд
         // поэтому лучше ограничить свободный доступ к свойствам и
         // использовать методы, в которых можно будет реализовать проверку входящих данных
-        author1.name = "Tom"; // свойству name объекта author1 присвоили значение Tom
-        author1.surname = "Crowed"; // свойству surname объекта author1 присвоили значение Crowed
+        author1.name = "Tom"; // 1.15 - свойству name объекта author1 присвоили значение Tom
+        author1.surname = "Crowed"; // 1.16 -  свойству surname объекта author1 присвоили значение Crowed
 
-        Author author2 = new Author();
-        author2.name = "Mike"; // свойству name объекта author2 присвоили значение Mike
-        author2.surname = "Thompson"; // свойству surname объекта author2 присвоили значение Thompson
+        Author author2 = new Author(); // 1.13 - второй экземпляр
+        author2.name = "Mike"; // 1.18 - свойству name объекта author2 присвоили значение Mike
+        author2.surname = "Thompson"; // 1.19 - свойству surname объекта author2 присвоили значение Thompson
 
-        // вызов методов
-        author1.printFullName(); // вызвали метод printFullName объекта author1
-        author2.printFullName(); // вызвали метод printFullName объекта author2
+        // 1.24 - вызов методов
+        author1.printFullName(); // 1.25 - вызвали метод printFullName объекта author1
+        author2.printFullName(); // 1.26 - вызвали метод printFullName объекта author2
 
-        // вызвали метод getFullName объекта author1,
-        // результат работы метода присвоили переменной fullName
+        // 1.30 - вызвали метод getFullName объекта author1, результат работы метода присвоили переменной fullName
         String fullName = author1.getFullName();
         System.out.println(fullName);
 
-        // типДанных имяПеременной = new вызовКонструктора(аргументы);
-        Book book1 = new Book(author2); // в конструктор передали ссылку на экземпляр класса Author
-        book1.setTitle("Книга"); // вызвали метод setTitle объекта book1, метод проверит валидность данных,
-        // установит значение свойства title
-        System.out.println(book1.getTitle()); // метод getTitle вернет значение свойства title объекта book1
-        book1.setPageCount(22); // вызвали метод setPageCount объекта book1, метод проверит валидность данных,
-        // установит значение свойства pageCount
+        // 1.35 - Создаем объект книги - типДанных имяПеременной = new вызовКонструктора(аргументы);
+        Book book1 = new Book(author2);
+        // 1.36 - в конструктор передали ссылку на экземпляр класса Author -> Book 1.37
+        book1.setTitle("Книга");
+        // 1.40 - Т.к есть сеттор, то можно вызвать метод setTitle объекта book1, + метод проверит валидность данных, установит значение свойства title -> Book
+        System.out.println(book1.getTitle());
+        // 1.45 -  Т.к есть геттор, то метод getTitle вернет значение свойства title объекта book1
+
+        book1.setPageCount(22);
+        // 1.46 - аналогично для количество страниц, вызвали метод setPageCount объекта book1, метод проверит валидность данных, установит значение свойства pageCount -> Book
 
         Book book2 = new Book(author2);
         book2.setTitle("Java 17");
@@ -59,15 +61,15 @@ public class Application {
         book5.setTitle("Многопоточность в Java");
         book5.setPageCount(2600);
 
-        // типДанных имяПеременной = new вызовКонструктора();
+        // 1.58 - типДанных имяПеременной = new вызовКонструктора();
         Shelf shelf = new Shelf();
-        // метод addBook перегружен
-        shelf.addBook(book1); // вызов метода addBook(Book book) {}
-        shelf.addBook(book5); // вызов метода addBook(Book book) {}
-        shelf.addBook(book2, book3, book4); // вызов метода addBook(Book... books) {}
+        // 1.59 - метод addBook перегружен
+        shelf.addBook(book1); // 1.60 - вызов метода addBook(Book book) {} для чниги1
+        shelf.addBook(book5); // 1.61 - вызов метода addBook(Book book) {} для чниги1
+        shelf.addBook(book2, book3, book4); // 1.62 - FIXME вызов метода addBook(Book... books) {} и передача в аргумент МНОЖЕСТВО книг
 
 
-        // вывод имени автора первой книги на полке
+        // 1.63 - FIXME вывод имени автора первой книги на полке
         System.out.println(shelf.getBooks()[0].getAuthor().name);
         // 1. shelf - экземпляр класса Shelf
         // 2. shelf.getBooks() метод вернет ссылку на значение свойства books объекта shelf - массив книг
@@ -75,14 +77,14 @@ public class Application {
         // 4. shelf.getBooks()[0].getAuthor() метод вернет ссылку на значение свойства author книги
         // 5. shelf.getBooks()[0].getAuthor().name получили значение свойства name автора
 
-        // класс - способ описания сущности,
-        // определяющий ее состояние и поведение
-        // класс - набор свойств и методов будущих объектов
+        // 1.1 - класс - способ описания сущности,
+        // 1.2 - определяющий ее состояние и поведение
+        //  1.3 - класс - набор свойств и методов будущих объектов
 
-        // На основе класса создаются объекты
-        // (экземпляры данного класса) - представители
-        // данного класса, имеющие конкретное состояние и
-        // поведение, определенное в классе
+        // 1.4 - На основе класса создаются объекты
+        // 1.5 - (экземпляры данного класса) - представители
+        // 1.6 - данного класса, имеющие конкретное состояние и
+        // 1.7 - поведение, определенное в классе
 
     }
 }

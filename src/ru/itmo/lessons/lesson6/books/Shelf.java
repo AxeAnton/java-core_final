@@ -3,8 +3,8 @@ package ru.itmo.lessons.lesson6.books;
 import java.util.Arrays;
 
 public class Shelf {
-    private String color = "белый"; // цвет полки
-    private Book[] books = new Book[4]; // книги
+    private String color = "белый"; // 1.53 - цвет полки
+    private Book[] books = new Book[4]; // 1.54 - FIXME книги, указываем сразу ОБЪЕКТ МАССИВА!
 
     public Book[] getBooks() {
         return books;
@@ -22,18 +22,19 @@ public class Shelf {
         return color;
     }
 
-    // метод добавления одной книги на полку
+    // 1.55 - метод добавления одной книги на полку
     public void addBook(Book book){
         for (int i = 0; i < books.length; i += 1) {
             if (books[i] == null) {
                 books[i] = book;
-                return;
+                return; // return
+                // 1.56 - FIXME  return- заканчивает целиком метод, а break - ТОЛЬКО цикл!
             }
         }
         System.out.println("Книге '" + book.getTitle() + "' автора " + book.getAuthor().getFullName() + " не хватило места на полке ");
     }
-    // метод добавления нескольких книг на полку
-    public void addBook(Book... books){ //  books - массив, состоящий из элементов, переданных в метод через запятую
+    // 1.57 - FIXME метод добавления нескольких книг (Book... books), три точки! на полку. FIXME перегруженный метод -> App
+    public void addBook(Book... books){
         System.out.println(Arrays.toString(books));
         for (Book book : books) {
             addBook(book); // вызов метода addBook(Book book)
